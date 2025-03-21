@@ -38,19 +38,23 @@ class QuizzInterface:
 
     def right(self):
         global NUM
-        idk = self.quiz.check_answer("True")
-        if idk:
+        check = self.quiz.check_answer("True")
+        if check:
             NUM +=1
             self.score.config(text=f"score = {NUM}")
             self.canvas.config(bg= "Green")
+        else:
+            self.canvas.config(bg="Red")
         self.window.after(500, self.quiz_end)
 
     def wrong(self):
         global NUM
-        idk = self.quiz.check_answer("False")
-        if idk:
+        check = self.quiz.check_answer("True")
+        if check:
             NUM += 1
             self.score.config(text=f"score = {NUM}")
+            self.canvas.config(bg="Green")
+        else:
             self.canvas.config(bg="Red")
         self.window.after(500, self.quiz_end)
 
